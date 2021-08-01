@@ -5,7 +5,7 @@ mixin Helpers {
       bool error = false}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds:2),
+        duration: Duration(seconds:3),
         content: Text(message),
         behavior: SnackBarBehavior.floating,
         backgroundColor: error ? Colors.red : Colors.green,

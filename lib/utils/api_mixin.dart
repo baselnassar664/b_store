@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+
+import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/utils/helpers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
@@ -16,15 +18,15 @@ mixin ApiMixin implements Helpers {
 
   void handleServerError(BuildContext context) {
     showSnackBar(
-        context: context,
-       message: 'Unable to perform your request now!',
+      context,
+        message: 'Unable to perform your request now!',
         error: true);
   }
 
   void showMessage(BuildContext context, Response response,
       {bool error = false}) {
     showSnackBar(
-        context: context,
+        context,
         message: jsonDecode(response.body)['message'],
         error: error);
   }

@@ -1,4 +1,5 @@
 
+import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
@@ -17,6 +18,7 @@ class _LaunchScreenState extends State<LaunchScreen> {
     // TODO: implement initState
     super.initState();
   Future.delayed(Duration(seconds: 3),(){
+
     Navigator.pushReplacementNamed(context,  '/boarding_screen');
   });
   }

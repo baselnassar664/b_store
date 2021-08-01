@@ -1,3 +1,4 @@
+import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,8 +11,10 @@ import 'auth/veirfy_account_reset_password.dart';
 import 'auth/verify-account_screen.dart';
 import 'boarding/boarding_screen.dart';
 import 'launch_screen.dart';
-void main(){
+import 'main_screen.dart';
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await StudentPreferences().initPreferences();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
@@ -58,6 +61,7 @@ class _MainAppState extends State<MainApp> {
         '/verify-account_screen': (context) => VerifyAccountScreen(),
         '/reset_password_screen': (context) => ResetPasswordScreen(),
         '/verify_account_reset_password': (context) => VerifyAccountResetPassword(),
+        '/main_screen': (context) =>MainScreen()
       },
     );
   }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AppElevatedButton extends StatelessWidget {
   final String text;
   final Color color;
-  final Function() onPressed;
+  final void Function() onPressed;
   final Color colortext;
   final double Width;
   AppElevatedButton({required this.text,required this.onPressed, this.color=AppColors.app_color, this.colortext=Colors.white, this.Width=double.infinity});
