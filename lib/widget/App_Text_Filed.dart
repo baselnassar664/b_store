@@ -56,7 +56,7 @@ class AppTextFiled extends StatelessWidget {
             width: 1,
             color: Color(0xff000000).withOpacity(0.1),
           ),
-         borderRadius: BorderRadius.circular(20),
+         borderRadius: BorderRadius.circular(15),
         ),
 focusedBorder: OutlineInputBorder(
   borderSide: BorderSide(

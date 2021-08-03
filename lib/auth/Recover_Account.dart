@@ -1,3 +1,5 @@
+import 'package:b_store/api/auth_api_controller.dart';
+import 'package:b_store/auth/reset_password_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/helpers.dart';
 import 'package:b_store/utils/size_config.dart';
@@ -55,31 +57,44 @@ class _RecoverAccountState extends State<RecoverAccount> with Helpers {
           SizedBox(height: SizeConfig.scaleHeight(90),),
          AppTextFiled(
            keyboardType: TextInputType.number,
+            maxLength: 9,
             textEditingController:  _phoneTextEditingController,
            hintText: 'Enter your phone number ',prefixIcon: Icons.phone_android,),
           SizedBox(height: SizeConfig.scaleHeight(20),),
           AppElevatedButton(text: 'Next', onPressed:() async{
-          await   performePhone();
+          await   performForgetPassword();
           })
         ],
       ),
     );
   }
-  Future performePhone()async{
-    if (checkData()){
-      await confirmPhone();
+  Future performForgetPassword() async {
+    if (checkData()) {
+      await forgetPassword();
     }
-
   }
-  bool checkData(){
-    if(_phoneTextEditingController.text.isNotEmpty){
+  bool checkData() {
+    if (_phoneTextEditingController.text.isNotEmpty) {
       return true;
     }
-    showSnackBar(context, message: 'Enter required data',error: true);
+    showSnackBar(context, message: 'Enter required data!',error: true);
     return false;
   }
-  Future confirmPhone()async{
-    await Navigator.pushNamed(context,  '/verify_account_reset_password');
+
+  Future forgetPassword() async {
+    bool status =  await AuthApiController()
+        .forgetPassword(context, mobile: _phoneTextEditingController.text);
+
+    if (status) navigateToResetPassword();
   }
-}
+
+  void navigateToResetPassword() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                ResetPasswordScreen(mobile: _phoneTextEditingController.text)));
+  }
+  }
+
 

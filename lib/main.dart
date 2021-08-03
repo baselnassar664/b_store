@@ -7,7 +7,7 @@ import 'auth/Recover_Account.dart';
 import 'auth/reset_password_screen.dart';
 import 'auth/sign_in_screen.dart';
 import 'auth/sign_up_screen.dart';
-import 'auth/veirfy_account_reset_password.dart';
+
 import 'auth/verify-account_screen.dart';
 import 'boarding/boarding_screen.dart';
 import 'launch_screen.dart';
@@ -59,8 +59,6 @@ class _MainAppState extends State<MainApp> {
         '/sign_in_screen': (context) => SignInScreen(),
         '/sign_up_screen': (context) => SignUpScreen(),
         '/verify-account_screen': (context) => VerifyAccountScreen(),
-        '/reset_password_screen': (context) => ResetPasswordScreen(),
-        '/verify_account_reset_password': (context) => VerifyAccountResetPassword(),
         '/main_screen': (context) =>MainScreen()
       },
     );

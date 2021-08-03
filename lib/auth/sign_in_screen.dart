@@ -52,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
             SizedBox(height: SizeConfig.scaleHeight(90),),
             AppTextFiled(
               textEditingController: _mobileEditingController,
-                hintText: 'Mobile Number',keyboardType: TextInputType.number,prefixIcon: Icons.phone_android),
+                hintText: 'Mobile Number',keyboardType: TextInputType.number,prefixIcon: Icons.phone_android,maxLength: 9,),
             SizedBox(height: SizeConfig.scaleHeight(20),),
             AppTextFiled(
               textEditingController: _passwordEditingController,

@@ -9,7 +9,7 @@ final TextEditingController controller;
 final Color? color;
 
 
-ContainerVerifyAccount({this.end=20,required this.focusNode, required this.onChanged,required this.controller, this.color,});
+ContainerVerifyAccount({this.end=10,required this.focusNode, required this.onChanged,required this.controller, this.color,});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ ContainerVerifyAccount({this.end=20,required this.focusNode, required this.onCha
         margin: EdgeInsetsDirectional.only(
           end: SizeConfig.scaleWidth(end),
         ),
-        width: SizeConfig.scaleWidth(50),
-        height: SizeConfig.scaleHeight(50),
+        width: SizeConfig.scaleWidth(55),
+        height: SizeConfig.scaleHeight(60),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(

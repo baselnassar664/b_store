@@ -15,6 +15,7 @@ class _BoardingScreenState extends State<BoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
      extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset:false,
       body: Padding(
         padding: EdgeInsets.only(
           top: SizeConfig.scaleHeight(150),

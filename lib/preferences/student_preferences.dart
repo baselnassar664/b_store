@@ -45,4 +45,5 @@ class StudentPreferences {
   Future<bool> logout() async {
     return await _sharedPreferences.clear();
   }
+
 }
