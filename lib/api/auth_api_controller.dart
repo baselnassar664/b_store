@@ -49,7 +49,7 @@ class AuthApiController with Helpers ,ApiMixin{
     return false;
   }
   Future<bool> Resgister(BuildContext context,
-      {required String mobile, required String password,required String name,required String STORE_API_KEY, required String gender,required int city_id}) async {
+      {required String mobile, required String password,required String name,required String STORE_API_KEY, required String gender,required String city_id}) async {
     var response = await http.post(getUrl(ApiSettings.REGISTER),
         body: {
       'mobile': mobile,

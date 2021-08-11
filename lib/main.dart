@@ -1,17 +1,17 @@
 import 'package:b_store/preferences/student_preferences.dart';
+import 'package:b_store/screens/Categories_screen.dart';
+import 'package:b_store/screens/auth/Recover_Account.dart';
+import 'package:b_store/screens/auth/sign_in_screen.dart';
+import 'package:b_store/screens/auth/sign_up_screen.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'auth/Recover_Account.dart';
-import 'auth/reset_password_screen.dart';
-import 'auth/sign_in_screen.dart';
-import 'auth/sign_up_screen.dart';
 
-import 'auth/verify-account_screen.dart';
+
 import 'boarding/boarding_screen.dart';
 import 'launch_screen.dart';
-import 'main_screen.dart';
+import 'bottom_bar/main_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await StudentPreferences().initPreferences();
@@ -58,8 +58,10 @@ class _MainAppState extends State<MainApp> {
         '/recover_account_screen': (context) => RecoverAccount(),
         '/sign_in_screen': (context) => SignInScreen(),
         '/sign_up_screen': (context) => SignUpScreen(),
-        '/verify-account_screen': (context) => VerifyAccountScreen(),
-        '/main_screen': (context) =>MainScreen()
+        // '/verify-account_screen': (context) => VerifyAccountScreen(),
+        '/main_screen': (context) =>MainScreen(),
+        '/categories_screen': (context)=>CategoriesScreen(),
+
       },
     );
   }

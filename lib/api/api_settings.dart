@@ -9,6 +9,6 @@ mixin ApiSettings {
   static const String FORGET_PASSWORD = _API_BASE_URL + "auth/forget-password";
   static const String RESET_PASSWORD = _API_BASE_URL + "auth/reset-password";
   static const String ACTIVATE = _API_BASE_URL + "auth/activate";
-
+  static const String GET_CATEGORIES = _API_BASE_URL + "categories";
 
 }

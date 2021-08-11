@@ -31,6 +31,7 @@ dependencies:
   flutter_svg: ^0.22.0
   shared_preferences: ^2.0.6
   http: ^0.13.3
+  smooth_page_indicator: ^0.3.0-nullsafety.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -50,7 +51,14 @@ flutter:
   assets:
     - images/boarding.png
     - images/Path.png
-
+    - images/1.png
+    - images/2.png
+    - images/3.png
+    - images/clothes.jpg
+    - images/shoes.jpg
+    - images/wirless.jpg
+    - images/bags.jpg
+    - images/washes.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

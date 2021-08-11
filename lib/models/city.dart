@@ -1,12 +1,12 @@
 import 'package:b_store/models/student.dart';
 
 class City{
- final int id;
- final String nameEn;
- final String nameAr;
+ int id;
+ String nameEn;
+ String nameAr;
 
  City({required this.id,required  this.nameEn, required this.nameAr});
- List<City> _city=[
+ static  List<City> city=[
    City(id: 1,nameEn: 'Gaza ',nameAr: 'غزة 	'),
    City(id: 2,nameEn: 'Deir Al-Balah ',nameAr: 'دير البلح'),
    City(id: 3,nameEn: 'Khanyounis  ',nameAr: 'خانيونس'),
@@ -16,8 +16,13 @@ class City{
    City(id: 7,nameEn: 'Rafah  ',nameAr: 'رفح'),
    City(id: 8,nameEn: '	Jbalya ',nameAr: 'جباليا'),
    City(id: 9,nameEn: ' Beit Lahya',nameAr: 'بيت لاهيا'),
-   City(id: 10,nameEn: '	Biet Hanoon',nameAr: 'غزة 	'),
-   City(id: 11,nameEn: 'Gaza ',nameAr: 'بيت حانون'),
+   City(id: 10,nameEn: '	Biet Hanoon',nameAr: 'بيت حانون'),
+
+ ];
+ static List<City> gender=[
+   City(id: 1,nameEn: 'Male',nameAr: 'ذكر'),
+   City(id: 2,nameEn: 'Female',nameAr: 'انثى'),
+
  ];
 }
 /*

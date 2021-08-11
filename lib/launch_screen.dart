@@ -17,10 +17,10 @@ class _LaunchScreenState extends State<LaunchScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-  Future.delayed(Duration(seconds: 3),(){
-
-    Navigator.pushReplacementNamed(context,  '/boarding_screen');
-  });
+    Future.delayed(Duration(seconds: 3), () {
+      String route = StudentPreferences().isLoggedIn ? '/main_screen' :  '/boarding_screen';
+      Navigator.pushReplacementNamed(context, route);
+    });
   }
   @override
   Widget build(BuildContext context) {
