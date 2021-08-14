@@ -150,5 +150,30 @@ class AuthApiController with Helpers ,ApiMixin{
 
     return false;
   }
+  Future<bool> changePassword(BuildContext context,
+      {required String current_password,
+        required String new_password,
+        required String new_password_confirmation}) async {
+    var response = await http.post(
+      getUrl(ApiSettings.POST_CHANGE_PASSWORD),
+      body: {
+        'current_password': current_password,
+        'new_password': new_password,
+        'new_password_confirmation': new_password_confirmation,
+      },
+    );
+
+    print(response.body);
+    if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
+      return true;
+    } else if (response.statusCode != 500) {
+      showMessage(context, response, error: true);
+    }else{
+      handleServerError(context);
+    }
+
+    return false;
+  }
 
 }

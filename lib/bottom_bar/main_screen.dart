@@ -69,7 +69,7 @@ int _selectedIndex=0;
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Setting',
           ),
         ],
       ),

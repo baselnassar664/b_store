@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,7 @@ import 'app_text.dart';
 class RowSetting extends StatelessWidget {
 final String text;
 final IconData icon;
-final void Function()? onTap;
+final Void Function()? onTap;
 
 RowSetting({required this.text,required  this.icon, this.onTap});
 
@@ -21,7 +23,7 @@ RowSetting({required this.text,required  this.icon, this.onTap});
     SizedBox(width: SizeConfig.scaleWidth(20),),
     AppText(text:text, color: AppColors.app_text1, fontsize: SizeConfig.scaleTextFont(16)),
     Spacer(),
-    IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,size: 24, color: AppColors.app_color,)),
+   Icon(Icons.arrow_forward_ios,size: 24, color: AppColors.app_color,),
 ],
 ),
 );

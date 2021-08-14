@@ -1,4 +1,5 @@
 
+import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:flutter/material.dart';
 class ApparText extends StatelessWidget {
@@ -10,8 +11,10 @@ class ApparText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+
       style: TextStyle(
-        fontSize: SizeConfig.scaleTextFont(16),
+        fontSize: SizeConfig.scaleTextFont(20),
+        color: AppColors.app_text1
       ),
     );
   }

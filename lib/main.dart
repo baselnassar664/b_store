@@ -1,8 +1,14 @@
 import 'package:b_store/preferences/student_preferences.dart';
-import 'package:b_store/screens/Categories_screen.dart';
+import 'package:b_store/screens/Categories/Bags_screen.dart';
+import 'package:b_store/screens/Categories/Categories_screen.dart';
+import 'package:b_store/screens/Categories/clothes_screen.dart';
+import 'package:b_store/screens/Categories/electroics_screen.dart';
+import 'package:b_store/screens/Categories/shoes_screen.dart';
 import 'package:b_store/screens/auth/Recover_Account.dart';
+import 'package:b_store/screens/auth/change_password.dart';
 import 'package:b_store/screens/auth/sign_in_screen.dart';
 import 'package:b_store/screens/auth/sign_up_screen.dart';
+import 'package:b_store/screens/contact_us.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +18,7 @@ import 'package:flutter/services.dart';
 import 'boarding/boarding_screen.dart';
 import 'launch_screen.dart';
 import 'bottom_bar/main_screen.dart';
+import 'screens/about_app.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await StudentPreferences().initPreferences();
@@ -61,7 +68,13 @@ class _MainAppState extends State<MainApp> {
         // '/verify-account_screen': (context) => VerifyAccountScreen(),
         '/main_screen': (context) =>MainScreen(),
         '/categories_screen': (context)=>CategoriesScreen(),
-
+        '/about_app': (context)=>AboutAPP(),
+        '/clothes_screen': (context)=>ClothesScreen(),
+        '/shoes_screen': (context)=>ShoesScreen(),
+        '/bags_screen': (context)=>BagsScreen(),
+        '/electronics_screen': (context)=>ElectronicsScreen(),
+        '/contactus': (context)=>ContactUs(),
+        '/change_password': (context)=>ChangePassword(),
       },
     );
   }
