@@ -39,9 +39,17 @@ class StudentPreferences {
      student.name=_sharedPreferences.getString('name') ?? '';
     student.mobile=_sharedPreferences.getString('mobile')?? '';
     student.gender = _sharedPreferences.getString('gender') ?? '';
+    student.storeId=_sharedPreferences.getInt('store_id')?? 0;
+    student.cityId=_sharedPreferences.getInt('city_id')?? 0;
+    student.active = _sharedPreferences.getBool('active') ?? false;
+    student.token = _sharedPreferences.getString('token') ?? '';
+    student.verified = _sharedPreferences.getBool('verified') ?? false;
     return student;
   }
-
+  Future<bool> setLanguage(String languageCode) async {
+    return await _sharedPreferences.setString('language_code', languageCode);
+  }
+  String get languageCode => _sharedPreferences.getString('language_code') ?? 'en';
   Future<bool> logout() async {
     return await _sharedPreferences.clear();
   }

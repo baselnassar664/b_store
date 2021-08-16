@@ -1,4 +1,12 @@
 import 'package:b_store/api/auth_api_controller.dart';
+import 'package:b_store/get/language.dart';
+import 'package:b_store/get/language_getx_controller.dart';
+import 'package:b_store/preferences/student_preferences.dart';
+import 'package:b_store/screens/about_app.dart';
+import 'package:b_store/screens/auth/change_password.dart';
+import 'package:b_store/screens/auth/profile_screen.dart';
+import 'package:b_store/screens/auth/sign_in_screen.dart';
+import 'package:b_store/screens/contact_us.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
@@ -7,6 +15,8 @@ import 'package:b_store/widget/row_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
 
@@ -31,30 +41,34 @@ class _SettingScreenState extends State<SettingScreen> {
           ImageAuth(),
 
           SizedBox(height: SizeConfig.scaleHeight(70)),
-           buildGestureDetector(  text: 'Profile',
-             icon: Icons.person,onTap: (){}),
+           buildGestureDetector(  text: "profile".tr,
+             icon: Icons.person,onTap: (){
+                 Get.to(ProfileScreen());
+               }),
            buildDivider(),
-           buildGestureDetector(   text: 'Language',
-               icon: Icons.language,onTap: (){}),
+           buildGestureDetector(   text:  "language".tr,
+               icon: Icons.language,onTap: (){
+                 AppLocale.changeLang();
+               }),
            buildDivider(),
-           buildGestureDetector(   text: 'Edit mobile',
+           buildGestureDetector(   text:  " edit_mobile".tr,
                icon: Icons.phone_android,onTap: (){}),
            buildDivider(),
-           buildGestureDetector(    text: 'Change password',
-               icon: Icons.lock,onTap: (){}),
+           buildGestureDetector(    text: "change_password".tr,
+               icon: Icons.lock,onTap: (){  Get.to(ChangePassword());}),
           buildDivider(),
-          buildGestureDetector( text: ' Addresses',
+          buildGestureDetector( text: "address".tr,
               icon: Icons.location_city_sharp,onTap: (){}),
           buildDivider(),
-          buildGestureDetector(   text: ' Contact us',
-              icon: Icons.contact_page,onTap: (){ Navigator.pushNamed(context, '/contactus');}),
+          buildGestureDetector(   text: "contact_us".tr,
+              icon: Icons.contact_page,onTap: (){  Get.to(ContactUs());}),
           buildDivider(),
-          buildGestureDetector(    text: ' About',
+          buildGestureDetector(    text: "about".tr,
               icon: Icons.info,onTap: (){
-               Navigator.pushNamed(context, '/about_app');
+               Get.to(AboutAPP());
               }),
           buildDivider(),
-          buildGestureDetector(     text: ' Logout',
+          buildGestureDetector(     text: "logout".tr,
               icon: Icons.logout,onTap: (){
             _showDialog();
               }),
@@ -119,7 +133,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Future logout() async {
     bool logout = await AuthApiController().logout(context);
     if (logout) {
-      Navigator.pushReplacementNamed(context, '/sign_in_screen');
+     Get.off(SignInScreen());
     }
   }
 }

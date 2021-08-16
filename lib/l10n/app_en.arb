@@ -1,0 +1,11 @@
+{
+"language": "Language",
+  "profile": " Profile",
+  " edit_mobile": "Edit mobile",
+  "change_password": "Change password",
+  "address": "Addresses",
+  "contact_us": "Contact us",
+  "about": " About",
+  "logout": "Logout"
+
+}

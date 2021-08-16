@@ -1,9 +1,11 @@
+import 'package:b_store/screens/Categories/Categories_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
 import 'package:b_store/widget/cotainerhome1.dart';
 import 'package:b_store/widget/pageviewhome.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -80,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Spacer(),
               TextButton(
                 onPressed: (){
-                  Navigator.pushNamed(context,  '/categories_screen');
+                 Get.to(CategoriesScreen());
                 },
                   child: AppText(text:'see all', color: AppColors.app_text2, fontsize:SizeConfig.scaleTextFont(12),)),
             ],

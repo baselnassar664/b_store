@@ -3,7 +3,7 @@ import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../models/bottom_bar.dart';
 import 'cart_screen.dart';
 import 'favorite_screen.dart';
@@ -17,10 +17,10 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<BottomBar> _bar=[
-    BottomBar(text: 'Home',screen: HomeScreen()),
-    BottomBar(text: 'Cart',screen: CartScreen()),
-    BottomBar(text: 'Favourite',screen: favoriteScreen()),
-    BottomBar(text: 'Setting',screen: SettingScreen()),
+    BottomBar(text: "home".tr,screen: HomeScreen()),
+    BottomBar(text: "cart".tr,screen: CartScreen()),
+    BottomBar(text: "favourite".tr,screen: favoriteScreen()),
+    BottomBar(text: "setting".tr,screen: SettingScreen()),
   ];
 int _selectedIndex=0;
   @override
@@ -56,20 +56,20 @@ int _selectedIndex=0;
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: "home".tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+            label: "cart".tr,
           ),
 
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favourite',
+            label: "favourite".tr,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Setting',
+            label:  "setting".tr,
           ),
         ],
       ),

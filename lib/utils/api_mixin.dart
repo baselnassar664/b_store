@@ -34,7 +34,21 @@ mixin ApiMixin implements Helpers {
   Map<String, String> get requestHeaders {
     return {
       HttpHeaders.authorizationHeader: StudentPreferences().token,
-      'X-Requested-With': 'XMLHttpRequest'
+      'X-Requested-With': 'XMLHttpRequest',
+    'lang': StudentPreferences().languageCode
+    };
+  }
+  Map<String, String> get baseHeader {
+    return {
+      'X-Requested-With': 'XMLHttpRequest',
+      'lang':  StudentPreferences().languageCode
+    };
+  }
+
+  Map<String, String> get header {
+    return {
+      HttpHeaders.authorizationHeader:  StudentPreferences().token,
+      'X-Requested-With': 'XMLHttpRequest',
     };
   }
 }

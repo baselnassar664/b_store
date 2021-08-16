@@ -13,7 +13,8 @@ class AuthApiController with Helpers ,ApiMixin{
   Future<bool> login(BuildContext context,
       {required String mobile, required String password}) async {
     var response = await http.post(getUrl(ApiSettings.LOGIN),
-        body: {'mobile': mobile, 'password': password});
+        body: {'mobile': mobile, 'password': password},
+        headers:baseHeader);
 
     if (isSuccessRequest(response.statusCode)) {
       var jsonResponse = jsonDecode(response.body);
@@ -48,8 +49,8 @@ class AuthApiController with Helpers ,ApiMixin{
     handleServerError(context);
     return false;
   }
-  Future<bool> Resgister(BuildContext context,
-      {required String mobile, required String password,required String name,required String STORE_API_KEY, required String gender,required String city_id}) async {
+  Future<int?> Resgister(BuildContext context,
+      {required String mobile, required String password,required String name,required String STORE_API_KEY, required String gender,required  int  city_id}) async {
     var response = await http.post(getUrl(ApiSettings.REGISTER),
         body: {
       'mobile': mobile,
@@ -57,29 +58,28 @@ class AuthApiController with Helpers ,ApiMixin{
           'name':name,
           'STORE_API_KEY':STORE_API_KEY,
           'gender':gender,
-          'city_id':city_id,
-    });
+          'city_id':city_id.toString(),
+    },
+    headers:baseHeader );
 
     if (isSuccessRequest(response.statusCode)) {
-      var jsonResponse = jsonDecode(response.body);
-      var jsonObject = jsonResponse['data'];
+      showMessage(context, response);
 
-      Student student = Student.fromJson(jsonObject);
-      await StudentPreferences().save(student);
+      return jsonDecode(response.body)['code'];
 
-      return true;
     } else if (response.statusCode != 500) {
       showMessage(context, response,error: true);
     }
     handleServerError(context);
-    return false;
+    return null;
   }
   Future<bool> forgetPassword(BuildContext context,
       {required String mobile}) async {
     var response = await http
-        .post(getUrl(ApiSettings.FORGET_PASSWORD), body: {'mobile': mobile});
+        .post(getUrl(ApiSettings.FORGET_PASSWORD), body: {'mobile': mobile},headers: baseHeader);
     print('CODE: ${jsonDecode(response.body)['code']}');
     if (isSuccessRequest(response.statusCode)) {
+      showSnackBar(context, message:'CODE: ${jsonDecode(response.body)['code']}');
       return true;
     } else if (response.statusCode != 500) {
       showMessage(context, jsonDecode(response.body));
@@ -94,9 +94,12 @@ class AuthApiController with Helpers ,ApiMixin{
         .post(getUrl(ApiSettings.ACTIVATE), body: {
           'mobile': mobile,
       'code':code,
-        });
+        },
+        headers: baseHeader
+        );
     print('CODE: ${jsonDecode(response.body)['code']}');
     if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
       return true;
     } else if (response.statusCode != 500) {
       showMessage(context, jsonDecode(response.body));
@@ -108,10 +111,7 @@ class AuthApiController with Helpers ,ApiMixin{
   Future<bool> logout(BuildContext context) async {
     var response = await http.get(
       getUrl(ApiSettings.LOGOUT),
-      headers: {
-        HttpHeaders.authorizationHeader: StudentPreferences().token,
-        'X-Requested-With': 'XMLHttpRequest'
-      },
+      headers:requestHeaders,
     );
     print(response.statusCode);
     if (response.statusCode == 200 ||
@@ -136,6 +136,7 @@ class AuthApiController with Helpers ,ApiMixin{
         'password': password,
         'password_confirmation': password,
       },
+      headers: baseHeader,
     );
 
     print(response.body);
@@ -161,6 +162,7 @@ class AuthApiController with Helpers ,ApiMixin{
         'new_password': new_password,
         'new_password_confirmation': new_password_confirmation,
       },
+      headers: requestHeaders,
     );
 
     print(response.body);

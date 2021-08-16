@@ -1,8 +1,11 @@
+import 'package:b_store/screens/auth/sign_in_screen.dart';
+import 'package:b_store/screens/auth/sign_up_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_elevatedbutton.dart';
 import 'package:b_store/widget/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class BoardingScreen extends StatefulWidget {
   const BoardingScreen({Key? key}) : super(key: key);
 
@@ -35,11 +38,11 @@ class _BoardingScreenState extends State<BoardingScreen> {
             Row(
               children: [
                buildContainer(color: AppColors.app_color,text: 'Sign in',ontap: (){
-                 Navigator.pushReplacementNamed(context,  '/sign_in_screen');
+                 Get.off(SignInScreen());
                }),
                 Spacer(),
                 buildContainer(color: Colors.white,text: 'Sign up',colorText:AppColors.app_color,ontap: (){
-                  Navigator.pushReplacementNamed(context,  '/sign_up_screen');
+                  Get.off(SignUpScreen());
                 }),
               ],
             )

@@ -1,4 +1,7 @@
 import 'package:b_store/api/auth_api_controller.dart';
+import 'package:b_store/bottom_bar/main_screen.dart';
+import 'package:b_store/screens/auth/Recover_Account.dart';
+import 'package:b_store/screens/auth/sign_up_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/helpers.dart';
 import 'package:b_store/utils/size_config.dart';
@@ -7,6 +10,7 @@ import 'package:b_store/widget/app_elevatedbutton.dart';
 import 'package:b_store/widget/app_text.dart';
 import 'package:b_store/widget/image_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -56,13 +60,13 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
             SizedBox(height: SizeConfig.scaleHeight(20),),
             AppTextFiled(
               textEditingController: _passwordEditingController,
-                hintText: 'Password',prefixIcon: Icons.lock,keyboardType: TextInputType.number),
+                hintText: 'Password',prefixIcon: Icons.lock,),
             SizedBox(height: SizeConfig.scaleHeight(10),),
             Align(
               alignment: Alignment.centerRight,
                 child: InkWell(
                   onTap: (){
-                    Navigator.pushNamed(context,'/recover_account_screen');
+                   Get.to(RecoverAccount());
                   },
                     child: AppText(text: 'Forgot Password?', color: AppColors.app_color, fontsize: SizeConfig.scaleTextFont(12),fontWeight: FontWeight.w700,))),
             SizedBox(height: SizeConfig.scaleHeight(40),),
@@ -73,7 +77,7 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
 
             InkWell(
               onTap: (){
-                Navigator.pushNamed(context, '/sign_up_screen');
+               Get.to(SignUpScreen());
               },
                 child: AppText(text: 'Create an account?', color: AppColors.app_color, fontsize: SizeConfig.scaleTextFont(14),fontWeight: FontWeight.w600,textAlign: TextAlign.center))
           ],
@@ -101,7 +105,7 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
     if (loggedIn) {
       showSnackBar(context, message: 'You are logged in successfully ');
        Future.delayed(Duration(seconds: 3),(){
-         Navigator.pushReplacementNamed(context,   '/main_screen');
+         Get.off(MainScreen());
        });
     }
   }

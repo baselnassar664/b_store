@@ -10,6 +10,7 @@ import 'package:b_store/widget/app_text.dart';
 import 'package:b_store/widget/appar_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 class RecoverAccount extends StatefulWidget {
   const RecoverAccount({Key? key}) : super(key: key);
 
@@ -90,11 +91,7 @@ class _RecoverAccountState extends State<RecoverAccount> with Helpers {
   }
 
   void navigateToResetPassword() {
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                ResetPasswordScreen(mobile: _phoneTextEditingController.text)));
+     Get.off(ResetPasswordScreen(mobile: _phoneTextEditingController.text));
   }
   }
 
