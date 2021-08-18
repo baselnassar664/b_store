@@ -12,21 +12,23 @@ import 'package:http/http.dart' as http;
 
 import 'api_settings.dart';
 class  FavoriteProductApiController  with  ApiMixin, Helpers{
-  Future<List< ProudctDetails>> getFavorite() async {
-    var response = await http.get(getUrl(ApiSettings.GET_Favorite ),headers: {  'Accept':'application/json',
+  Future<List<ProudctDetails>> getFavoriteProducts() async {
+    var response = await http.get(getUrl(ApiSettings.GET_Favorite),headers: {
+      'Accept':'application/json',
       HttpHeaders.authorizationHeader: StudentPreferences().token,
-      'X-Requested-With': 'XMLHttpRequest',});
+      'X-Requested-With': 'XMLHttpRequest',
+    });
     if (isSuccessRequest(response.statusCode)) {
       var data = jsonDecode(response.body)['list'] as List;
-      List<ProudctDetails> proudctDetails= data.map((e) =>  ProudctDetails.fromJson(e)).toList();
-      return proudctDetails ;
+      List<ProudctDetails> favoriteProducts = data.map((e) => ProudctDetails.fromJson(e)).toList();
+      return favoriteProducts;
     }
     return [];
   }
-  Future<bool> addFavorite(BuildContext context ,{required int product_id}) async {
+  Future<bool> addFavoriteProducts(BuildContext context, {required int id}) async {
     var response = await http.post(
         getUrl(ApiSettings.GET_Favorite),
-        body: {'product_id': product_id.toString()},
+        body: {'product_id': id.toString()},
         headers: requestHeaders
     );
     if (isSuccessRequest(response.statusCode)) {

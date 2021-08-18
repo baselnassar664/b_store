@@ -22,4 +22,6 @@ mixin ApiSettings {
   static const String GET_PRODUCT_DETAILS= _API_BASE_URL + "products";
 
   static const String GET_Favorite= _API_BASE_URL + "favorite-products";
+
+  static const String GET_HOME= _API_BASE_URL + "home";
 }

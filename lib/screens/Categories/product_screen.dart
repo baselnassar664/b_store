@@ -18,7 +18,7 @@ class ProudctScreen extends StatefulWidget {
 }
 
 class _ProudctScreenState extends State<ProudctScreen> {
-  ProudctGetController controller=Get.put(ProudctGetController());
+  ProudctGetController  controller=Get.put(ProudctGetController());
   void initState() {
     Future.delayed(Duration.zero, () async {
       await controller.getproduct(id: widget.id);

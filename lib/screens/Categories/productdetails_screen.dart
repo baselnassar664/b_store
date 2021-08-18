@@ -1,3 +1,5 @@
+
+import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/get/productdetails_controller.dart';
 import 'package:b_store/models/productdetails.dart';
 import 'package:b_store/preferences/student_preferences.dart';
@@ -21,7 +23,8 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  ProudctDetailsGetController controller=Get.put(ProudctDetailsGetController());
+  ProudctGetController  controller=Get.put(ProudctGetController());
+
   void initState() {
     Future.delayed(Duration.zero, () async {
       await  controller
@@ -42,8 +45,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           Navigator.pop(context);
         },),
       ),
-      body: GetX<  ProudctDetailsGetController>(
-        builder: ( ProudctDetailsGetController controller) {
+      body: GetX<  ProudctGetController >(
+        builder: ( ProudctGetController  controller) {
           return controller.loading.value
               ? Center(
             child: CircularProgressIndicator(),
@@ -107,12 +110,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                              AppText(text: StudentPreferences().languageCode=='en'?  controller.proudctdetails.value!.nameEn:controller.proudctdetails.value!.nameAr,color: AppColors.app_text1,fontsize: SizeConfig.scaleTextFont(20),fontWeight: FontWeight.w700,),
                              Spacer(),
                              GestureDetector(
+                                  onTap: (){
+                                  controller.addFavoriteProducts(product: controller.proudctdetails.value!, context: context);
+                                  },
                                child: Container(
                                  width: SizeConfig.scaleWidth(55),
                                  height:SizeConfig.scaleHeight(55),
                                  decoration: BoxDecoration(
                                    shape:BoxShape.circle,
-                                    color: Colors.red
+                                    color: controller.proudctdetails.value!.isFavorite ?Colors.red:Colors.grey
                                  ),
                                  child: Icon(Icons.favorite,color: Colors.white,),
                                ),

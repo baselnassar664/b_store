@@ -1,4 +1,5 @@
 import 'package:b_store/get/favorite_controller.dart';
+import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +12,17 @@ class favoriteScreen extends StatefulWidget {
 }
 
 class _favoriteScreenState extends State<favoriteScreen> {
-  FavoriteGetController controller=Get.put(FavoriteGetController());
+  ProudctGetController controller=Get.put(ProudctGetController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetX< FavoriteGetController>(
-        builder: ( FavoriteGetController controller) {
+      body: GetX<  ProudctGetController >(
+        builder: ( ProudctGetController  controller) {
           return controller.loading.value
               ? Center(
             child: CircularProgressIndicator(),
           )
-              :  controller.favorite.isNotEmpty?
+              :  controller.favoriteProducts.isNotEmpty?
           GridView.builder(
               padding:  EdgeInsets.only(
                   top: SizeConfig.scaleHeight(30),
@@ -35,6 +36,7 @@ class _favoriteScreenState extends State<favoriteScreen> {
                 mainAxisSpacing:SizeConfig.scaleHeight(24),
                 childAspectRatio:SizeConfig.scaleWidth(140)/SizeConfig.scaleHeight(300),
               ),
+              itemCount: controller.favoriteProducts.length,
               itemBuilder: (context,index){
                 return  GestureDetector(
                   onTap: (){
@@ -52,7 +54,7 @@ class _favoriteScreenState extends State<favoriteScreen> {
                         fit: StackFit .expand,
                         children: [
                           CachedNetworkImage(
-                            imageUrl:controller.favorite[index].imageUrl,
+                            imageUrl:controller.favoriteProducts[index].imageUrl,
                             fit: BoxFit.cover,
                             height: SizeConfig.scaleHeight(400),
                             width: double.infinity,

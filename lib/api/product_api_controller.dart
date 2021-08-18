@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 
 import 'api_settings.dart';
 class ProductApiController with  ApiMixin, Helpers{
+
   Future<List< Product>> getProduct({required int id}) async {
     var response = await http.get(getUrl(ApiSettings.GET_PRODUCT + '/$id'),headers:requestHeaders);
     if (isSuccessRequest(response.statusCode)) {
@@ -20,6 +21,7 @@ class ProductApiController with  ApiMixin, Helpers{
     }
     return [];
   }
+
   Future <ProudctDetails?> getproductdetails({required int id}) async {
     var response = await http.get(getUrl(ApiSettings.GET_PRODUCT_DETAILS + '/$id'),headers:requestHeaders);
     if (isSuccessRequest(response.statusCode)) {
@@ -28,6 +30,8 @@ class ProductApiController with  ApiMixin, Helpers{
       return productDetails;
     }
   }
+
+
   Future<List<ProudctDetails>> getFavoriteProducts() async {
     var response = await http.get(getUrl(ApiSettings.GET_Favorite),headers: {
       'Accept':'application/json',
@@ -41,10 +45,10 @@ class ProductApiController with  ApiMixin, Helpers{
     }
     return [];
   }
-  Future<bool> addFavorite(BuildContext context ,{required int product_id}) async {
+  Future<bool> addFavoriteProducts(BuildContext context, {required int id}) async {
     var response = await http.post(
         getUrl(ApiSettings.GET_Favorite),
-        body: {'product_id': product_id.toString()},
+        body: {'product_id': id.toString()},
         headers: requestHeaders
     );
     if (isSuccessRequest(response.statusCode)) {
