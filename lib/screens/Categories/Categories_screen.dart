@@ -3,6 +3,7 @@ import 'package:b_store/get/CategoryGetxController.dart';
 import 'package:b_store/models/Categories.dart';
 import 'package:b_store/models/ontap.dart';
 import 'package:b_store/models/sub_categories.dart';
+import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/Categories/subcategories_screen.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
@@ -68,7 +69,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       child: Image.network(controller.categories [index].imageUrl,fit: BoxFit.cover,),),
                   ),
                   SizedBox(width: SizeConfig.scaleWidth(20),),
-                  Text(controller.categories [index].nameEn),
+
+                  Text(StudentPreferences().languageCode=='en'?  controller.categories [index].nameEn:controller.categories [index].nameAr),
                   Spacer(),
                   IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,size: 20,))
 

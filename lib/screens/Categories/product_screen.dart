@@ -1,4 +1,6 @@
 import 'package:b_store/get/product_controller.dart';
+import 'package:b_store/preferences/student_preferences.dart';
+import 'package:b_store/screens/Categories/productdetails_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
@@ -56,45 +58,44 @@ class _ProudctScreenState extends State<ProudctScreen> {
               ),
               itemCount: controller.proudct.length,
               itemBuilder: (context,index){
-                return  Container(
+                return  GestureDetector(
+                  onTap: (){
+                    Get.to(ProductDetailsScreen(id: controller.proudct[index].id,));
+                  },
+                  child: Container(
 
-                  clipBehavior:Clip.antiAlias ,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                          color: Colors.white,
-                    border: Border.all(color: AppColors.app_color)
-                  ),
-                  height: SizeConfig.scaleHeight(300),
-                  width:  SizeConfig.scaleWidth(146),
-                  child:Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: SizeConfig.scaleHeight( 190),
-                        child: Image.network(
-                          controller.proudct[index].imageUrl,fit: BoxFit.cover,
+                    clipBehavior:Clip.antiAlias ,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                      border: Border.all(color: AppColors.app_color)
+                    ),
+                    height: SizeConfig.scaleHeight(300),
+                    width:  SizeConfig.scaleWidth(146),
+                    child:Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: SizeConfig.scaleHeight( 190),
+                          child: Image.network(
+                            controller.proudct[index].imageUrl,fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-
-
-                            AppText(text: controller.proudct[index].nameEn, color: AppColors.app_text1, fontsize: SizeConfig.scaleTextFont(13)),
-
-
-
-
-                      SizedBox(
-                        height: 12,
-                      ),
-                      AppText(text: "\$${controller.proudct[index].price}", color: AppColors.app_text3, fontsize: SizeConfig.scaleTextFont(14),fontWeight: FontWeight.w700),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      AppText(text: "${controller.proudct[index].quantity} product available", color: AppColors.app_text2, fontsize: SizeConfig.scaleTextFont(13),textAlign: TextAlign.start,),
-                    ],
-                  )
+                        SizedBox(
+                          height: 10,
+                        ),
+                              AppText(text: StudentPreferences().languageCode=='en'?  controller.proudct[index].nameEn:controller.proudct[index].nameAr, color: AppColors.app_text1, fontsize: SizeConfig.scaleTextFont(13)),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        AppText(text: "\$${controller.proudct[index].price}", color: AppColors.app_text3, fontsize: SizeConfig.scaleTextFont(14),fontWeight: FontWeight.w700),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        AppText(text: '${controller.proudct[index].quantity} product_available'.tr, color: AppColors.app_text2, fontsize: SizeConfig.scaleTextFont(13),textAlign: TextAlign.start,),
+                      ],
+                    )
+                  ),
                 );
               }
           );

@@ -20,4 +20,6 @@ mixin ApiSettings {
 
   static const String GET_PRODUCT= _API_BASE_URL + "sub-categories";
   static const String GET_PRODUCT_DETAILS= _API_BASE_URL + "products";
+
+  static const String GET_Favorite= _API_BASE_URL + "favorite-products";
 }

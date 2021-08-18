@@ -1,4 +1,5 @@
 import 'package:b_store/get/subcategory_controller.dart';
+import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/Categories/product_screen.dart';
 
 import 'package:b_store/utils/size_config.dart';
@@ -81,7 +82,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
 
                   alignment: Alignment.center,
                   height: SizeConfig.scaleHeight(50),
-                  child:  AppText(text: controller.subcategories[index].nameEn,color: Colors.white,fontsize: SizeConfig.scaleTextFont(12),),
+                  child:  AppText(text: StudentPreferences().languageCode=='en'?  controller.subcategories [index].nameEn:controller.subcategories[index].nameAr,color: Colors.white,fontsize: SizeConfig.scaleTextFont(12),),
                   ),
                   ),
                     ]

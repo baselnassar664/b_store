@@ -2,12 +2,14 @@ import 'package:b_store/bottom_bar/setting_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
+import 'package:b_store/get/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../models/bottom_bar.dart';
 import 'cart_screen.dart';
 import 'favorite_screen.dart';
 import 'home_screen.dart';
+import 'package:get/get.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 

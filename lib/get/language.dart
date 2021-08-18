@@ -18,7 +18,8 @@ class AppLocale extends Translations {
       "home":"Home",
       "cart":"Cart",
       "favourite":"Favourite",
-      "setting": "Setting"
+      "setting": "Setting",
+      'product_available':"product available"
     },
     'ar': {
       'hello': 'مرحباً',
@@ -34,7 +35,8 @@ class AppLocale extends Translations {
        "home":"الصفحة الرئيسية",
       "cart":"عربة التسوق",
       "favourite":"المفضلة",
-      "setting": "الاعدادت"
+      "setting": "الاعدادت",
+     'product_available':"المنتج متاح"
     }
   };
 
