@@ -3,6 +3,7 @@ import 'package:b_store/get/language.dart';
 import 'package:b_store/get/language_getx_controller.dart';
 import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/about_app.dart';
+import 'package:b_store/screens/address/adress_screen.dart';
 import 'package:b_store/screens/auth/change_password.dart';
 import 'package:b_store/screens/auth/profile_screen.dart';
 import 'package:b_store/screens/auth/sign_in_screen.dart';
@@ -51,14 +52,13 @@ class _SettingScreenState extends State<SettingScreen> {
                  AppLocale.changeLang();
                }),
            buildDivider(),
-           buildGestureDetector(   text:  " edit_mobile".tr,
-               icon: Icons.phone_android,onTap: (){}),
-           buildDivider(),
            buildGestureDetector(    text: "change_password".tr,
                icon: Icons.lock,onTap: (){  Get.to(ChangePassword());}),
           buildDivider(),
           buildGestureDetector( text: "address".tr,
-              icon: Icons.location_city_sharp,onTap: (){}),
+              icon: Icons.location_city_sharp,onTap: (){
+            Get.to(AddressScreen());
+              }),
           buildDivider(),
           buildGestureDetector(   text: "contact_us".tr,
               icon: Icons.contact_page,onTap: (){  Get.to(ContactUs());}),

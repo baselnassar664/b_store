@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 class CategoryGetxController extends GetxController{
   final CategoriesApiController categoryApiController = CategoriesApiController();
   RxList<Categories> categories = <Categories>[].obs;
-
+  RxBool loading = false.obs;
 
   static CategoryGetxController get to => Get.find();
 
@@ -19,7 +19,9 @@ class CategoryGetxController extends GetxController{
   }
 
   Future<void> getCategory() async {
+    loading.value = true;
     categories.value = await categoryApiController.getCategories();
+    loading.value = false;
     update();
   }
 

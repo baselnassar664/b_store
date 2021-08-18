@@ -8,11 +8,12 @@ class SubCategoryController extends GetxController{
   RxList<SubCategories> subcategories= <SubCategories>[].obs;
   static SubCategoryController get to => Get.find();
   void onInit() {
+
     super.onInit();
   }
 
   Future<void> getSubCategory({required int id}) async {
-    subcategories.value = await SubCategoriesApiController().getSubCategories(id:id);
+    subcategories.value = await SubCategoriesApiController().getSubCategory(id: id);
     update();
   }
 }

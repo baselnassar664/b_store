@@ -7,16 +7,20 @@ import 'package:get/get.dart';
 class CitiesGetxController extends GetxController {
   final CitiesApiController citiesApiController = CitiesApiController();
   RxList<Cities> cities = <Cities>[].obs;
-
+  RxBool loading = false.obs;
   static CitiesGetxController get to => Get.find();
 
   void onInit() {
+
     getCities();
     super.onInit();
   }
 
   Future<void> getCities() async {
+
+    loading.value = true;
     cities.value = await citiesApiController.getCities();
+    loading.value = false;
     update();
   }
 

@@ -73,6 +73,32 @@ class AuthApiController with Helpers ,ApiMixin{
     handleServerError(context);
     return null;
   }
+  Future<bool> updateProfile(BuildContext context,
+      {required String name, required String gender,required  int  city_id}) async {
+    var response = await http.post(getUrl(ApiSettings.POST_PROFILE),
+        body: {
+          'name':name,
+          'gender':gender,
+          'city_id':city_id.toString(),
+        },
+        headers: {
+          HttpHeaders.authorizationHeader: StudentPreferences().token,
+          'X-Requested-With': 'XMLHttpRequest',
+          'lang': StudentPreferences().languageCode,
+          'Accept': 'application/json'
+    });
+
+    if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
+
+     return true;
+
+    } else if (response.statusCode != 500) {
+      showMessage(context, response,error: true);
+    }
+    handleServerError(context);
+    return false;
+  }
   Future<bool> forgetPassword(BuildContext context,
       {required String mobile}) async {
     var response = await http

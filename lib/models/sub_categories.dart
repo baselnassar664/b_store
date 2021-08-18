@@ -8,7 +8,7 @@ class SubCategories{
   late int productsCount;
   late String imageUrl;
 
-
+  SubCategories();
 
   SubCategories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
