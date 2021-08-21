@@ -1,8 +1,12 @@
+import 'package:b_store/get/card_controller.dart';
 import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/get/productdetails_controller.dart';
+import 'package:b_store/models/cart_item.dart';
+import 'package:b_store/models/product.dart';
 import 'package:b_store/models/productdetails.dart';
 import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/utils/AppColors.dart';
+import 'package:b_store/utils/helpers.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_elevatedbutton.dart';
 import 'package:b_store/widget/app_text.dart';
@@ -11,26 +15,31 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 class ProductDetailsScreen extends StatefulWidget {
-  final int id;
 
-  ProductDetailsScreen({required this.id});
+final int id;
+final ProudctDetails? proudctDetails;
+  ProductDetailsScreen({required this.id,this.proudctDetails});
+
+
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> with Helpers{
   ProudctGetController  controller=Get.put(ProudctGetController());
 
   void initState() {
     Future.delayed(Duration.zero, () async {
       await  controller
-          .getproudctdetails(id: widget.id);
+          .getproudctdetails(id: widget.id );
     });
     super.initState();
   }
+   int cardIncrement=1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +139,31 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       AppText(text: 'Description:',fontsize: SizeConfig.scaleTextFont(17),color: AppColors.app_text1,fontWeight: FontWeight.w700,),
                       SizedBox(height: SizeConfig.scaleHeight(8),),
                       Expanded(child: AppText(text: StudentPreferences().languageCode=='en'?  controller.proudctdetails.value!.infoEn:controller.proudctdetails.value!.infoAr,color: AppColors.app_text1,fontsize: SizeConfig.scaleTextFont(14),)),
+                      SizedBox(height: SizeConfig.scaleHeight(8),),
+                      RatingBar.builder(
+                        initialRating: double.parse(
+                            ProudctGetController
+                                .to.proudctdetails.value!.productRate
+                                .toString()),
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: 35,
+                        itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (rating) {
+                          ProudctGetController.to.rattingProduct(
+                              product: ProudctGetController
+                                  .to.proudctdetails.value!,
+                              context: context,
+                              rate: rating);
+                        },
+                      ),
                       Spacer(),
-                      AppElevatedButton(text: 'Add to cart', onPressed: (){})
+                      AppElevatedButton(text: 'Add to cart', onPressed: (){showCartDialog();})
                     ],
                   ),
                 ),
@@ -141,5 +173,168 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         },
       ),
     );
+  }
+  showCartDialog() {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) =>
+          StatefulBuilder(builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Container(
+                // clipBehavior: Clip.antiAlias,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        color: AppColors.app_color,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25)),
+                      ),
+                      padding: EdgeInsets.all(15),
+                      width: double.infinity,
+                      child: AppText(
+                        text: 'Add To Card',
+                        color: Colors.white,
+                        fontsize:SizeConfig.scaleTextFont(18),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: CachedNetworkImage(
+                              imageUrl: controller.proudctdetails.value!.imageUrl,
+                              placeholder: (context, url) => Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.app_color,
+                                ),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              height: 100,
+                              width: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  FloatingActionButton(
+                                    backgroundColor: AppColors.app_color,
+                                    mini: true,
+                                    onPressed: () {
+                                      setState(() {
+                                        ++cardIncrement;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.add,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: AppText(
+                                      text: cardIncrement.toString(), fontsize:SizeConfig.scaleTextFont(15),
+                                      color: AppColors.app_text1,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  FloatingActionButton(
+                                    backgroundColor: AppColors.app_color,
+                                    mini: true,
+                                    onPressed: () {
+                                      setState(() {
+                                        cardIncrement == 1 ? 1 : --cardIncrement;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.remove,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              AppText(
+                                  text:
+                                  'Total Price: \$${controller.proudctdetails.value!.price * cardIncrement}',
+                                color: AppColors.app_text3,
+                                fontsize:SizeConfig.scaleTextFont(13),
+                                fontWeight: FontWeight.bold,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding:
+                            EdgeInsets.symmetric(horizontal: SizeConfig.scaleWidth(15), vertical: SizeConfig.scaleHeight(10)),
+                            child: AppElevatedButton(
+                              onPressed: () async{
+                                bool status = await CartGetxController.to.createCartItem(cartItem);
+                                if(status){
+                                 showSnackBar(context,message: 'Add Success');
+                                  cardIncrement=1 ;
+                                }else{
+                                 showSnackBar(context, message: 'Add failed');
+                                  cardIncrement =1;
+                                }
+                              },
+
+                              text: 'Add',
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(15),
+                            child: AppElevatedButton(
+                              onPressed: () {
+                                cardIncrement = 1;
+                                Get.back();
+                              },
+                              text: 'Cancel',
+
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            );
+          }),
+    );
+  }
+
+  CartItem get cartItem {
+    CartItem cartItem = CartItem();
+    cartItem.imageUrl = widget.proudctDetails!.imageUrl;
+    cartItem.productId =widget.proudctDetails!.id;
+    cartItem.price =widget.proudctDetails!.price as double;
+    cartItem.nameEn = widget.proudctDetails!.nameEn;
+    cartItem.nameAr = widget.proudctDetails!.nameAr;
+    cartItem.quantity = cardIncrement;
+    return cartItem;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:b_store/models/home.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'app_text.dart';
@@ -39,7 +40,14 @@ class latestProduct_card extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   color: AppColors.app_color,
                 ),
-                child: Image.network(product.imageUrl,fit: BoxFit.cover,),
+                child:  CachedNetworkImage(
+                  imageUrl: product .imageUrl,
+                  fit: BoxFit.cover,
+
+                  width: double.infinity,
+                  placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
             ),
             SizedBox(

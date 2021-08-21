@@ -13,7 +13,7 @@ class Product{
  late bool isFavorite;
  late String imageUrl;
 
-
+ Product();
 
 
  Product.fromJson(Map<String, dynamic> json) {

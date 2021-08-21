@@ -26,4 +26,10 @@ mixin ApiSettings {
   static const String GET_HOME= _API_BASE_URL + "home";
 
   static const String POST_RATE= _API_BASE_URL + "products/rate";
+  //card
+  static const String CARD = _BASE_URL + "payment-cards";
+
+  //order
+  static const String ORDER = _BASE_URL + "orders";
+
 }

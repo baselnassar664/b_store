@@ -71,4 +71,10 @@ class ProudctGetController extends GetxController{
     favoriteProducts.refresh();
     update();
   }
+  Future<void> rattingProduct({required ProudctDetails product,required BuildContext context,required double rate}) async {
+    await productApiController.productRate(context, id: product.id,ratting: rate);
+
+    favoriteProducts.refresh();
+    update();
+  }
 }

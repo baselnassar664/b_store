@@ -1,33 +1,39 @@
-class CartItem{
+class MyCard {
   late int id;
-  late int quantity;
-  late int productId;
-  late String imageUrl;
-  late String nameAr;
-  late String nameEn;
-  late double price;
+  late String type;
+  late String holderName;
+  late String cardNumber;
+  late String expDate;
+  late String cvv;
+  late int userId;
+  late String createdAt;
+  late String updatedAt;
 
-  CartItem();
+  MyCard();
 
-  CartItem.fromMap(Map<String, dynamic> rowMap) {
-    this.id = rowMap['id'];
-    this.productId = rowMap['product_id'];
-    this.imageUrl = rowMap['image'];
-    this.nameAr = rowMap['name_ar'];
-    this.nameEn = rowMap['name_en'];
-    this.price = double.parse(rowMap['price'].toString());
-    this.quantity = rowMap['quantity'];
+  MyCard.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    type = json['type'];
+    holderName = json['holder_name'];
+    cardNumber = json['card_number'];
+    expDate = json['exp_date'];
+    cvv = json['cvv'].toString();
+    userId = json['user_id'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
 
-  Map<String, dynamic> toMap() {
-    Map<String, dynamic> data = new Map<String, dynamic>();
-    data['product_id'] = this.productId;
-    data['quantity'] = this.quantity;
-    data['image'] = this.imageUrl;
-    data['name_ar'] = this.nameAr;
-    data['name_en'] = this.nameEn;
-    data['price'] = this.price;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['type'] = this.type;
+    data['holder_name'] = this.holderName;
+    data['card_number'] = this.cardNumber;
+    data['exp_date'] = this.expDate;
+    data['cvv'] = this.cvv;
+    data['user_id'] = this.userId;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
     return data;
   }
-
 }

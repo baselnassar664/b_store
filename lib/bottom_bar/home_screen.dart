@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: 4,
+                  itemCount: controller1.categories.length,
 
                   itemBuilder: (context, index) {
                     return  GestureDetector(
