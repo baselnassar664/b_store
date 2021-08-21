@@ -10,11 +10,11 @@ import 'package:http/http.dart' as http;
 import 'api_settings.dart';
 class CitiesApiController with  ApiMixin, Helpers{
   Future<List<Cities>> getCities() async {
-    var url = Uri.parse(ApiSettings.GET_CITIES);
-    var response = await http.get(url,headers:requestHeaders );
-    if(response.statusCode == 200){
-      CitiesResponse citiesResponse =  CitiesResponse.fromJson(jsonDecode(response.body));
-      return  citiesResponse.list;
+    var response = await http.get(getUrl(ApiSettings.GET_CITIES),headers: {'Accept': 'application/json'});
+    if (isSuccessRequest(response.statusCode)) {
+      var data = jsonDecode(response.body)['list'] as List;
+      List<Cities> cities = data.map((e) => Cities.fromJson(e)).toList();
+      return cities;
     }
     return [];
   }

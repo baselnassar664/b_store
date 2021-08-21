@@ -58,5 +58,17 @@ class ProudctGetController extends GetxController{
     update();
   }
 
-
+  Future<void> addRate(BuildContext context,{required int product_id,required int  rate}) async {
+    loading.value = true;
+   bool statue=  await ProductApiController().addRate(context, product_id: product_id, rate: rate);
+   if(statue){
+     int index=proudct.indexWhere((element) => element.id == product_id);
+     proudct[index].productRate = rate;
+   }
+    loading.value =false;
+    proudctdetails.refresh();
+    proudct.refresh();
+    favoriteProducts.refresh();
+    update();
+  }
 }

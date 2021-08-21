@@ -1,12 +1,12 @@
 class Categories {
- late int id;
- late String nameEn;
- late String nameAr;
- late String image;
- late int productsCount;
- late int subCategoriesCount;
- late String imageUrl;
- Categories();
+  late int id;
+  late String nameEn;
+  late String nameAr;
+  late String image;
+  late int productsCount;
+  late int subCategoriesCount;
+  late String imageUrl;
+  Categories();
 
 
   Categories.fromJson(Map<String, dynamic> json) {

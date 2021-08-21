@@ -54,7 +54,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
                 crossAxisCount:2,
                 crossAxisSpacing: SizeConfig.scaleWidth(10),
                 mainAxisSpacing:SizeConfig.scaleHeight(24),
-                childAspectRatio:SizeConfig.scaleWidth(146)/SizeConfig.scaleHeight(300),
+                childAspectRatio:SizeConfig.scaleWidth(146)/SizeConfig.scaleHeight(340),
               ),
               itemCount: controller.proudct.length,
               itemBuilder: (context,index){
@@ -86,13 +86,45 @@ class _ProudctScreenState extends State<ProudctScreen> {
                         ),
                               AppText(text: StudentPreferences().languageCode=='en'?  controller.proudct[index].nameEn:controller.proudct[index].nameAr, color: AppColors.app_text1, fontsize: SizeConfig.scaleTextFont(13)),
                         SizedBox(
-                          height: 12,
+                          height: 8,
                         ),
-                        AppText(text: "\$${controller.proudct[index].price}", color: AppColors.app_text3, fontsize: SizeConfig.scaleTextFont(14),fontWeight: FontWeight.w700),
+                        AppText(text: "\$${controller.proudct[index].price}", color: AppColors.app_text3, fontsize: SizeConfig.scaleTextFont(17),fontWeight: FontWeight.w700),
                         SizedBox(
-                          height: 12,
+                          height: 8,
                         ),
                         AppText(text: '${controller.proudct[index].quantity} product_available'.tr, color: AppColors.app_text2, fontsize: SizeConfig.scaleTextFont(13),textAlign: TextAlign.start,),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.star,color: Colors.amber,size: 15,),
+                              SizedBox(width: 5,),
+                              AppText(
+                                text: '(${controller.proudct[index].overalRate})',
+                                fontsize:SizeConfig.scaleWidth(10),
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        AppText(
+                          text: 'tha product is favorite: ',
+                          fontsize: SizeConfig.scaleTextFont(12),
+                          color:AppColors.app_text1,
+                        ),
+                        AppText(
+                          text: '${controller.proudct[index].isFavorite}',
+                          fontsize: SizeConfig.scaleTextFont(14),
+                          color: AppColors.app_text3,
+                          textAlign: TextAlign.center,
+                        ),
+
                       ],
                     )
                   ),

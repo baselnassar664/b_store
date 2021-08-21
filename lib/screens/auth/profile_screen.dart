@@ -62,8 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen> with Helpers{
             AppTextFiled(
               textEditingController: _nameController,
               hintText: 'Name',prefixIcon: Icons.person,),
-              SizedBox(height: SizeConfig.scaleHeight(20),),
-              GestureDetector(
+            SizedBox(height: SizeConfig.scaleHeight(20),),
+            GestureDetector(
               onTap: () async {
                 Cities selectedCity = await Get.to(CitiesScreen());
                 setState(() {
@@ -71,23 +71,23 @@ class _ProfileScreenState extends State<ProfileScreen> with Helpers{
                 });
               },
               child: Container(
-                  padding: EdgeInsetsDirectional.only(start: SizeConfig.scaleWidth(33), end: SizeConfig.scaleWidth(10)),
-                  alignment: AlignmentDirectional.centerStart,
-                  height:SizeConfig.scaleHeight(50),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xFF999999).withAlpha(25),
-                          offset: Offset(0, 5),
-                          blurRadius: 10,
-                          spreadRadius: 0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(color: Colors.grey)),
-                  child:getCityName(),
+                padding: EdgeInsetsDirectional.only(start: SizeConfig.scaleWidth(33), end: SizeConfig.scaleWidth(10)),
+                alignment: AlignmentDirectional.centerStart,
+                height:SizeConfig.scaleHeight(50),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFF999999).withAlpha(25),
+                        offset: Offset(0, 5),
+                        blurRadius: 10,
+                        spreadRadius: 0,
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(color: Colors.grey)),
+                child:getCityName(),
               ),
             ),
             SizedBox(height: SizeConfig.scaleHeight(20),),
@@ -131,9 +131,9 @@ class _ProfileScreenState extends State<ProfileScreen> with Helpers{
               ],
             ),
             SizedBox(height: SizeConfig.scaleHeight(40),),
-             AppElevatedButton(text: 'Update profile', onPressed:()async{
-            await peformeCreateAccount();
-             })
+            AppElevatedButton(text: 'Update profile', onPressed:()async{
+              await peformeCreateAccount();
+            })
           ],
         ),
       ),
@@ -142,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> with Helpers{
   Widget getCityName() {
     if (city == null) {
       return AppText(
-        text: CitiesGetxController.to.getCityNameById(id: StudentPreferences().student.cityId),
+        text:'Gaza',
         color:AppColors.app_text2,
         fontsize: SizeConfig.scaleTextFont(15),
       );

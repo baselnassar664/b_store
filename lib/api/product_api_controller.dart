@@ -61,4 +61,23 @@ class ProductApiController with  ApiMixin, Helpers{
     }
     return false;
   }
+  Future<bool> addRate(BuildContext context, {required int product_id,required int rate}) async {
+    var response = await http.post(
+        getUrl(ApiSettings.POST_RATE),
+        body: {
+          'product_id': product_id.toString(),
+          'rate': rate.toString(),
+        },
+        headers: requestHeaders
+    );
+    if (isSuccessRequest(response.statusCode)) {
+      showMessage(context, response);
+      return true;
+    } else if (response.statusCode != 500) {
+      showMessage(context, response, error: true);
+    }else{
+      handleServerError(context);
+    }
+    return false;
+  }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:b_store/models/home.dart';
 import 'package:b_store/models/student.dart';
 import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/utils/api_mixin.dart';
@@ -202,6 +203,20 @@ class AuthApiController with Helpers ,ApiMixin{
     }
 
     return false;
+  }
+
+  Future<String> refreshFcmToken( {required String newFcmToken}) async {
+    var response = await http.post(
+        getUrl(ApiSettings.refresh_fcm_token),
+        body: {
+          'fcm_token': newFcmToken,
+        },
+        headers: header
+    );
+    if (isSuccessRequest(response.statusCode)) {
+      return newFcmToken;
+    }
+    return 'false';
   }
 
 }

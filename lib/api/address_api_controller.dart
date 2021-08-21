@@ -17,6 +17,7 @@ class AddressApiController with Helpers ,ApiMixin{
     }
     return [];
   }
+
   Future<AddressDetails?> createAddress({required BuildContext context, required AddressDetails address}) async {
     var response = await http.post(
       getUrl(ApiSettings.GET_ADDRESS),
@@ -34,11 +35,7 @@ class AddressApiController with Helpers ,ApiMixin{
       var jsonObject = jsonDecode(response.body)['object'];
       return AddressDetails.fromJson(jsonObject);
     }
-    else if (response.statusCode != 500) {
-      showMessage(context, response, error: true);
-    }
-    handleServerError(context);
-    return null;
+
   }
 
   Future<bool> updateAddress({required BuildContext context, required AddressDetails address}) async {
@@ -79,4 +76,5 @@ class AddressApiController with Helpers ,ApiMixin{
     handleServerError(context);
     return false;
   }
+
 }

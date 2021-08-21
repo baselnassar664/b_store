@@ -1,4 +1,5 @@
 import 'package:b_store/preferences/student_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 
+import 'db/db_provilder.dart';
+import 'fb_noftification/fb_notifications.dart';
 import 'get/language.dart';
 
 import 'launch_screen.dart';
@@ -14,6 +17,8 @@ import 'launch_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await StudentPreferences().initPreferences();
+
+
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 

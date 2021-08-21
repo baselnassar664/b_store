@@ -3,6 +3,7 @@ import 'package:b_store/get/language.dart';
 import 'package:b_store/get/language_getx_controller.dart';
 import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/about_app.dart';
+import 'package:b_store/screens/address/add_adress_screen.dart';
 import 'package:b_store/screens/address/adress_screen.dart';
 import 'package:b_store/screens/auth/change_password.dart';
 import 'package:b_store/screens/auth/profile_screen.dart';
