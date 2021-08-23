@@ -17,6 +17,7 @@ import 'launch_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await StudentPreferences().initPreferences();
+
   await DBProvider().initDatabase();
 
   SystemChrome.setPreferredOrientations(

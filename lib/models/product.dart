@@ -4,11 +4,11 @@ class Product{
  late String nameAr;
  late String infoEn;
  late String infoAr;
- late int price;
+ late double price;
  late int quantity;
- late int overalRate;
+ late double overalRate;
  late int subCategoryId;
- late int productRate;
+ late double productRate;
  late double? offerPrice;
  late bool isFavorite;
  late String imageUrl;

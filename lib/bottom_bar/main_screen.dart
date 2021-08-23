@@ -10,6 +10,8 @@ import 'cart_screen.dart';
 import 'favorite_screen.dart';
 import 'home_screen.dart';
 import 'package:get/get.dart';
+
+import 'order_screen.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -20,9 +22,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<BottomBar> _bar=[
     BottomBar(text: "home".tr,screen: HomeScreen()),
-    BottomBar(text: "cart".tr,screen: CartScreen()),
     BottomBar(text: "favourite".tr,screen: favoriteScreen()),
+    BottomBar(text: "cart".tr,screen: CartScreen()),
+    BottomBar(text: "Order".tr,screen: OrderScreen()),
     BottomBar(text: "setting".tr,screen: SettingScreen()),
+
   ];
 int _selectedIndex=0;
   @override
@@ -61,18 +65,24 @@ int _selectedIndex=0;
             label: "home".tr,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: "cart".tr,
-          ),
-
-          BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: "favourite".tr,
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: "cart".tr,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_travel),
+            label:  "Order".tr,
+          ),
+
+
+          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label:  "setting".tr,
           ),
+
         ],
       ),
       body: _bar[_selectedIndex].screen,

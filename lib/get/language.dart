@@ -19,7 +19,8 @@ class AppLocale extends Translations {
       "cart":"Cart",
       "favourite":"Favourite",
       "setting": "Setting",
-      'product_available':"product available"
+      'product_available':"product available",
+      'nofilcation':'Notification',
     },
     'ar': {
       'hello': 'مرحباً',
@@ -36,7 +37,8 @@ class AppLocale extends Translations {
       "cart":"عربة التسوق",
       "favourite":"المفضلة",
       "setting": "الاعدادت",
-     'product_available':"المنتج متاح"
+     'product_available':"المنتج متاح",
+  'nofilcation':'الاشعارات',
     }
   };
 

@@ -60,7 +60,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
               itemBuilder: (context,index){
                 return  GestureDetector(
                   onTap: (){
-                    Get.to(ProductDetailsScreen(id: controller.proudct[index].id));
+                    Get.to(ProductDetailsScreen( proudct:controller.proudct[index] ,));
                   },
                   child: Container(
 

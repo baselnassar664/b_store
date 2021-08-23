@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class ProudctGetController extends GetxController{
   final ProductApiController productApiController = ProductApiController();
-  RxList< Product> proudct = < Product>[].obs;
+  RxList<ProudctDetails> proudct = < ProudctDetails>[].obs;
   RxList<ProudctDetails> favoriteProducts = <ProudctDetails>[].obs;
   Rx<ProudctDetails?> proudctdetails= ProudctDetails().obs;
   RxBool loading = false.obs;
@@ -47,10 +47,14 @@ class ProudctGetController extends GetxController{
   Future<void> addFavoriteProducts({required ProudctDetails product,required BuildContext context}) async {
     bool status = await productApiController.addFavoriteProducts(context, id: product.id);
     if(status){
-      int index = proudct.indexWhere((element) => element.id == product.id);
-      proudct[index].isFavorite == false ? favoriteProducts.add(product) : favoriteProducts.removeWhere((element) => element.id == proudct[index].id);
-      proudct[index].isFavorite = !proudct[index].isFavorite;
-      proudctdetails.value!.isFavorite = proudct[index].isFavorite ;
+      int index = favoriteProducts.indexWhere((element) => element.id == product.id);
+      if(index != -1) {
+        favoriteProducts.removeAt(index);
+        proudctdetails.value!.isFavorite = !proudctdetails.value!.isFavorite;
+      } else {
+        favoriteProducts.add(product);
+        proudctdetails.value!.isFavorite = !proudctdetails.value!.isFavorite;
+      }
     }
     proudctdetails.refresh();
     proudct.refresh();
@@ -58,19 +62,7 @@ class ProudctGetController extends GetxController{
     update();
   }
 
-  Future<void> addRate(BuildContext context,{required int product_id,required int  rate}) async {
-    loading.value = true;
-   bool statue=  await ProductApiController().addRate(context, product_id: product_id, rate: rate);
-   if(statue){
-     int index=proudct.indexWhere((element) => element.id == product_id);
-     proudct[index].productRate = rate;
-   }
-    loading.value =false;
-    proudctdetails.refresh();
-    proudct.refresh();
-    favoriteProducts.refresh();
-    update();
-  }
+
   Future<void> rattingProduct({required ProudctDetails product,required BuildContext context,required double rate}) async {
     await productApiController.productRate(context, id: product.id,ratting: rate);
 

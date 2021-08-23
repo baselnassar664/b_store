@@ -19,9 +19,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 class ProductDetailsScreen extends StatefulWidget {
 
-final int id;
-final ProudctDetails? proudctDetails;
-  ProductDetailsScreen({required this.id,this.proudctDetails});
+
+final ProudctDetails proudct;
+  ProductDetailsScreen({required this.proudct});
 
 
 
@@ -35,7 +35,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> with Helper
   void initState() {
     Future.delayed(Duration.zero, () async {
       await  controller
-          .getproudctdetails(id: widget.id );
+          .getproudctdetails(id: widget.proudct.id);
     });
     super.initState();
   }
@@ -259,7 +259,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> with Helper
                                     mini: true,
                                     onPressed: () {
                                       setState(() {
-                                        cardIncrement == 1 ? 1 : --cardIncrement;
+                                        cardIncrement == 1 ? cardIncrement = 1 : --cardIncrement;
                                       });
                                     },
                                     child: Icon(
@@ -298,6 +298,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> with Helper
                                  showSnackBar(context, message: 'Add failed');
                                   cardIncrement =1;
                                 }
+                                Get.back();
                               },
 
                               text: 'Add',
@@ -329,11 +330,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> with Helper
 
   CartItem get cartItem {
     CartItem cartItem = CartItem();
-    cartItem.imageUrl = widget.proudctDetails!.imageUrl;
-    cartItem.productId =widget.proudctDetails!.id;
-    cartItem.price =widget.proudctDetails!.price as double;
-    cartItem.nameEn = widget.proudctDetails!.nameEn;
-    cartItem.nameAr = widget.proudctDetails!.nameAr;
+    cartItem.imageUrl = widget.proudct.imageUrl;
+    cartItem.productId =widget.proudct.id;
+    cartItem.price =widget.proudct.price;
+    cartItem.nameEn = widget.proudct.nameEn;
+    cartItem.nameAr = widget.proudct.nameAr;
     cartItem.quantity = cardIncrement;
     return cartItem;
   }

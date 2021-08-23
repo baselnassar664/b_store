@@ -30,7 +30,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   CategoryGetxController controller1 = Get.put(CategoryGetxController ());
-
+  ProudctGetController  controller=Get.put(ProudctGetController());
   @override
   Widget build(BuildContext context) {
 

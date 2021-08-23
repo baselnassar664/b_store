@@ -61,6 +61,11 @@ class _SettingScreenState extends State<SettingScreen> {
             Get.to(AddressScreen());
               }),
           buildDivider(),
+          buildGestureDetector( text: 'nofilcation'.tr,
+              icon: Icons.notifications,onTap: (){
+                Get.to(AddressScreen());
+              }),
+          buildDivider(),
           buildGestureDetector(   text: "contact_us".tr,
               icon: Icons.contact_page,onTap: (){  Get.to(ContactUs());}),
           buildDivider(),

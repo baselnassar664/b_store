@@ -29,7 +29,7 @@ class AddressScreen extends StatelessWidget {
               },
             ),
           )
-              : Center(child: Text('no data'));
+              : Center(child: Text('No Address'));
         },
       ),
       floatingActionButton: FloatingActionButton(

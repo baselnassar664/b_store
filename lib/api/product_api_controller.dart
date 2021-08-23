@@ -12,11 +12,11 @@ import 'package:http/http.dart' as http;
 import 'api_settings.dart';
 class ProductApiController with  ApiMixin, Helpers{
 
-  Future<List< Product>> getProduct({required int id}) async {
+  Future<List< ProudctDetails>> getProduct({required int id}) async {
     var response = await http.get(getUrl(ApiSettings.GET_PRODUCT + '/$id'),headers:requestHeaders);
     if (isSuccessRequest(response.statusCode)) {
       var data = jsonDecode(response.body)['list'] as List;
-      List< Product> product = data.map((e) =>  Product.fromJson(e)).toList();
+      List<ProudctDetails> product = data.map((e) =>  ProudctDetails.fromJson(e)).toList();
       return product;
     }
     return [];
