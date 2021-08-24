@@ -35,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(body: GetBuilder<HomeGetxController>(
+    return Scaffold(
+        body: GetBuilder<HomeGetxController>(
 
       builder: (HomeGetxController home) {
         if (home.homeModel == null) {

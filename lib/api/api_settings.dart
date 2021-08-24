@@ -27,9 +27,9 @@ mixin ApiSettings {
 
   static const String POST_RATE= _API_BASE_URL + "products/rate";
   //card
-  static const String CARD = _BASE_URL + "payment-cards";
+  static const String CARD = _API_BASE_URL + "payment-cards";
 
   //order
-  static const String ORDER = _BASE_URL + "orders";
+  static const String ORDER =  _API_BASE_URL + "orders";
 
 }

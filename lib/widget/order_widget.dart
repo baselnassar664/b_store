@@ -32,7 +32,7 @@ class OrderWidget extends StatelessWidget {
           Radius.circular(7),
         ),
       ),
-      height: SizeConfig.scaleHeight(70),
+      height: SizeConfig.scaleHeight(80),
       child: Row(
         children: [
           Column(
@@ -50,7 +50,7 @@ class OrderWidget extends StatelessWidget {
                 text: 'Total Price: ${order.total}',
                 fontWeight: FontWeight.w500,
                 fontsize: SizeConfig.scaleTextFont(13),
-                color: AppColors.app_text1,
+                color: AppColors.app_text3,
               ),
             ],
           ),
@@ -59,12 +59,12 @@ class OrderWidget extends StatelessWidget {
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: order.status == 'Waiting' ? Colors.red : Colors.green),
+                color: order.status == 'Waiting' || order.status == 'Rejected'? Colors.red : Colors.green),
             child: AppText(
               text: ' ${order.status}',
               fontWeight: FontWeight.w500,
               fontsize: SizeConfig.scaleTextFont(13),
-              color: AppColors.app_text1,
+              color: Colors.white,
             ),
           )
         ],

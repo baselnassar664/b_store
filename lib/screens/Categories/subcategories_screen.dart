@@ -5,6 +5,7 @@ import 'package:b_store/screens/Categories/product_screen.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
 import 'package:b_store/widget/appar_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class SubCategoriesScreen extends StatefulWidget {
@@ -75,7 +76,14 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                   child:Stack(
                   fit: StackFit .expand,
                   children: [
-                  Image.network(controller.subcategories[index].imageUrl,fit: BoxFit.cover,),
+                    CachedNetworkImage(
+                      imageUrl:  controller.subcategories[index].imageUrl,
+                      fit: BoxFit.cover,
+
+                      width: double.infinity,
+                      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
                   Center(
                   child: Container(
                   color: Colors.black.withOpacity(0.7),

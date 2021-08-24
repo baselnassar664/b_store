@@ -7,6 +7,7 @@ import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/Categories/subcategories_screen.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -66,7 +67,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                       width: SizeConfig.scaleWidth(100),
                       height:SizeConfig.scaleHeight(100),
 
-                      child: Image.network(controller.categories [index].imageUrl,fit: BoxFit.cover,),),
+                      child:  CachedNetworkImage(
+                        imageUrl:  controller.categories[index].imageUrl,
+                        fit: BoxFit.cover,
+
+                        width: double.infinity,
+                        placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),),
                   ),
                   SizedBox(width: SizeConfig.scaleWidth(20),),
 

@@ -46,10 +46,13 @@ class CardApiController with ApiMixin ,Helpers{
     if (isSuccessRequest(response.statusCode)) {
       var jsonObject = jsonDecode(response.body)['object'];
       print('true');
+      showMessage(context, response);
+
       return MyCard.fromJson(jsonObject);
     }
     else if (response.statusCode != 500) {
       showMessage(context, response, error: true);
+      print('ERROR >>>>>>> ${jsonDecode(response.body)['message']}');
     }
     handleServerError(context);
     return null;

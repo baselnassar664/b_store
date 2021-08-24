@@ -50,14 +50,7 @@ class _CreateCreditCardState extends State<CreateCreditCard> with Helpers{
         padding: EdgeInsets.symmetric(vertical: SizeConfig.scaleHeight(30),horizontal: SizeConfig.scaleWidth(30),),
         child: Column(
           children: [
-            MyCardWidget(
-              cardNumber: cardNumber,
-              cardType: isVisa ? CardType.visa : CardType.mastercard,
-              cardHolderName: cardHolderName,
-              cvvCode: cvvCode,
-              expiryDate: expiryDate,
-              flag: flag,
-            ),
+
             Expanded(
               child: ListView(
                 children: [

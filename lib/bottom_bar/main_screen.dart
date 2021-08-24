@@ -1,4 +1,5 @@
 import 'package:b_store/bottom_bar/setting_screen.dart';
+import 'package:b_store/fb_noftification/fb_notifications.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
@@ -19,22 +20,31 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with FbNotifications{
   List<BottomBar> _bar=[
-    BottomBar(text: 'home'.tr,screen: HomeScreen()),
-    BottomBar(text: 'favourite'.tr,screen: favoriteScreen()),
-    BottomBar(text: 'cart'.tr,screen: CartScreen()),
-    BottomBar(text: 'order'.tr,screen: OrderScreen()),
-    BottomBar(text: 'setting'.tr,screen: SettingScreen()),
+    BottomBar(text: 'home',screen: HomeScreen()),
+    BottomBar(text: 'favourite',screen: favoriteScreen()),
+    BottomBar(text: 'cart',screen: CartScreen()),
+    BottomBar(text: 'order',screen: OrderScreen()),
+    BottomBar(text: 'setting',screen: SettingScreen()),
 
   ];
+
 int _selectedIndex=0;
+@override
+void initState() {
+  // TODO: implement initState
+  super.initState();
+  initializeForegroundNotificationForAndroid();
+  manageNotificationAction();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title:Text(_bar[_selectedIndex].text,
+        title:Text(_bar[_selectedIndex].text.tr,
         style: TextStyle(color: AppColors.app_text1,
 
         fontSize: SizeConfig.scaleTextFont(20,)),)

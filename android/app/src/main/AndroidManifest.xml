@@ -1,8 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.b_store">
-   <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
         android:label="b_store"
-        android:icon="@mipmap/ic_launcher">
+    android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        >
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -37,5 +42,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="store_notifications_channel"/>
     </application>
 </manifest>

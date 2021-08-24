@@ -100,7 +100,7 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
    return false;
   }
   Future login() async {
-
+    String? fcmToken = await FirebaseMessaging.instance.getToken();
     bool loggedIn = await AuthApiController().login(context,
        mobile: _mobileEditingController.text,
         password: _passwordEditingController.text);

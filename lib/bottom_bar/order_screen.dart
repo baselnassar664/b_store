@@ -11,6 +11,8 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  OrderGetxController controller=Get.put( OrderGetxController());
+
   @override
   void initState() {
     Future.delayed(Duration.zero,()async{
@@ -25,7 +27,7 @@ class _OrderScreenState extends State<OrderScreen> {
         builder: (OrderGetxController controller) {
           return controller.loading.value
               ? Center(child: CircularProgressIndicator())
-              : controller.orders.isEmpty
+              : controller.orders.isNotEmpty
               ? Padding(
             padding: EdgeInsets.symmetric(horizontal: SizeConfig.scaleWidth(30), vertical: SizeConfig.scaleHeight(10)),
             child: ListView.builder(
@@ -39,7 +41,7 @@ class _OrderScreenState extends State<OrderScreen> {
               },
             ),
           )
-              : Center(child: Text('No Data'));
+              : Center(child: Text('No Order',style: TextStyle(fontSize: SizeConfig.scaleTextFont(30)),));
         },
       ),
     );

@@ -46,7 +46,7 @@ class DisplayCardScreen extends StatelessWidget {
               },
             ),
           )
-              : Center(child: Text('No Data'));
+              : Center(child: Text('Add card',style: TextStyle(fontSize: SizeConfig.scaleTextFont(30)),));
         },
       ),
 

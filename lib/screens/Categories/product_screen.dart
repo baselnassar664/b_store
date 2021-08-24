@@ -5,6 +5,7 @@ import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';
 import 'package:b_store/widget/appar_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ProudctScreen extends StatefulWidget {
@@ -77,9 +78,14 @@ class _ProudctScreenState extends State<ProudctScreen> {
                         Container(
                           width: double.infinity,
                           height: SizeConfig.scaleHeight( 190),
-                          child: Image.network(
-                            controller.proudct[index].imageUrl,fit: BoxFit.cover,
-                          ),
+                          child:  CachedNetworkImage(
+                            imageUrl:  controller.proudct[index].imageUrl,
+                            fit: BoxFit.cover,
+
+                            width: double.infinity,
+                            placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) => Icon(Icons.error),
+                          )
                         ),
                         SizedBox(
                           height: 10,

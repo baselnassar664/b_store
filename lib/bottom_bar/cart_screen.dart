@@ -35,8 +35,8 @@ class _CartScreenState extends State<CartScreen> with Helpers {
             Padding(
               padding:  EdgeInsets.only(
                 top: SizeConfig.scaleHeight(30),
-                left: SizeConfig.scaleWidth(30),
-                right: SizeConfig.scaleWidth(30),
+                left: SizeConfig.scaleWidth(25),
+                right: SizeConfig.scaleWidth(25),
                 bottom: SizeConfig.scaleHeight(30),
               ),
               child: Column(
@@ -63,7 +63,7 @@ class _CartScreenState extends State<CartScreen> with Helpers {
                                 children: [
                                   Container(
 
-                                      width: SizeConfig.scaleWidth(150),
+                                      width: SizeConfig.scaleWidth(125),
                                       height: double.infinity,
                                       child:CachedNetworkImage(
                                         imageUrl:controller.cartItem[index].imageUrl,
@@ -120,7 +120,7 @@ class _CartScreenState extends State<CartScreen> with Helpers {
 
                     onPressed: (){
                       Get.to(shopOrder(cart: cart,));
-                    }, text: 'Submit'
+                    }, text: 'Proceed to Checkout'
                     ,
                   )
 
