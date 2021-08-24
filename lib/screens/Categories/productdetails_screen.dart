@@ -1,4 +1,4 @@
-import 'package:b_store/get/card_controller.dart';
+import 'package:b_store/get/cart_controller.dart';
 import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/get/productdetails_controller.dart';
 import 'package:b_store/models/cart_item.dart';

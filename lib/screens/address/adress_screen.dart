@@ -1,14 +1,19 @@
 import 'package:b_store/get/adress_controller.dart';
+import 'package:b_store/models/adress.dart';
+import 'package:b_store/utils/size_config.dart';
+import 'package:b_store/widget/adresswidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'add_adress_screen.dart';
-import 'adress_widget.dart';
+
 
 
 class AddressScreen extends StatelessWidget {
   AddressGetController controller = Get.put(AddressGetController());
+  final bool fromOrder;
 
+  AddressScreen({this.fromOrder = false});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +24,21 @@ class AddressScreen extends StatelessWidget {
               ? Center(child: CircularProgressIndicator())
               : controller.addresses.isNotEmpty
               ? Padding(
-            padding: EdgeInsets.symmetric(horizontal: 29, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: SizeConfig.scaleWidth(30), vertical: SizeConfig.scaleHeight(30)),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: controller.addresses.length,
               shrinkWrap: true,
+
               itemBuilder: (context, index) {
-                return AddressWidget(address: controller.addresses[index],);
+                return AddressWidget(
+                  address: controller.addresses[index],
+                  onTap: () => popScreen(address: controller.addresses[index]),
+                );
               },
             ),
           )
-              : Center(child: Text('No Address'));
+              : Center(child: Text('Add Address',style: TextStyle(fontSize: SizeConfig.scaleTextFont(30)),),);
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -39,5 +48,8 @@ class AddressScreen extends StatelessWidget {
         child: Icon(Icons.add),
       ),
     );
+  }
+  popScreen({required AddressDetails address}) {
+    if (fromOrder) Get.back(result: address);
   }
 }

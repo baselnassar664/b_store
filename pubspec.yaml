@@ -69,6 +69,8 @@ flutter:
     - images/wirless.jpg
     - images/bags.jpg
     - images/washes.jpg
+    - images/visa.png
+    - images/mastercard.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

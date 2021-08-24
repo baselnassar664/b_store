@@ -72,6 +72,7 @@ class ProductCartWidget extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                    color: AppColors.app_text1,
                   ),
+
                 ],
               )
             ],

@@ -1,9 +1,11 @@
+import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/models/home.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get.dart';
 import 'app_text.dart';
 class latestProduct_card extends StatelessWidget {
   final Latest_products product;
@@ -17,6 +19,7 @@ class latestProduct_card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProudctGetController  controller=Get.put(ProudctGetController());
     return Padding(
       padding: EdgeInsets.only(right: SizeConfig.scaleWidth(15)),
       child: Container(
@@ -26,7 +29,7 @@ class latestProduct_card extends StatelessWidget {
             color: Colors.white,
             border: Border.all(color: AppColors.app_color)
         ),
-        height: SizeConfig.scaleHeight(230),
+        height: SizeConfig.scaleHeight(250),
         width:  SizeConfig.scaleWidth(180),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,6 +68,7 @@ class latestProduct_card extends StatelessWidget {
             SizedBox(
               height: 8,
             ),
+           
           ],
         ),
       ),

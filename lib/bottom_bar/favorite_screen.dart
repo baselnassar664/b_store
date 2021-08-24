@@ -81,7 +81,7 @@ class _favoriteScreenState extends State<favoriteScreen> {
                     )
                 );
               }
-          ): Center(child: Text('No Favourite ',style: TextStyle(fontSize: SizeConfig.scaleTextFont(50)),));
+          ): Center(child: Text('No Favourite ',style: TextStyle(fontSize: SizeConfig.scaleTextFont(30)),));
         },
       ),
     );

@@ -21,11 +21,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   List<BottomBar> _bar=[
-    BottomBar(text: "home".tr,screen: HomeScreen()),
-    BottomBar(text: "favourite".tr,screen: favoriteScreen()),
-    BottomBar(text: "cart".tr,screen: CartScreen()),
-    BottomBar(text: "Order".tr,screen: OrderScreen()),
-    BottomBar(text: "setting".tr,screen: SettingScreen()),
+    BottomBar(text: 'home'.tr,screen: HomeScreen()),
+    BottomBar(text: 'favourite'.tr,screen: favoriteScreen()),
+    BottomBar(text: 'cart'.tr,screen: CartScreen()),
+    BottomBar(text: 'order'.tr,screen: OrderScreen()),
+    BottomBar(text: 'setting'.tr,screen: SettingScreen()),
 
   ];
 int _selectedIndex=0;
@@ -74,7 +74,7 @@ int _selectedIndex=0;
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_travel),
-            label:  "Order".tr,
+            label:  "order".tr,
           ),
 
 

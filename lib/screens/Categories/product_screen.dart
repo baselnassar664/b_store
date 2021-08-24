@@ -54,7 +54,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
                 crossAxisCount:2,
                 crossAxisSpacing: SizeConfig.scaleWidth(10),
                 mainAxisSpacing:SizeConfig.scaleHeight(24),
-                childAspectRatio:SizeConfig.scaleWidth(146)/SizeConfig.scaleHeight(340),
+                childAspectRatio:SizeConfig.scaleWidth(146)/SizeConfig.scaleHeight(300),
               ),
               itemCount: controller.proudct.length,
               itemBuilder: (context,index){
@@ -113,17 +113,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
                         SizedBox(
                           height: 8,
                         ),
-                        AppText(
-                          text: 'tha product is favorite: ',
-                          fontsize: SizeConfig.scaleTextFont(12),
-                          color:AppColors.app_text1,
-                        ),
-                        AppText(
-                          text: '${controller.proudct[index].isFavorite}',
-                          fontsize: SizeConfig.scaleTextFont(14),
-                          color: AppColors.app_text3,
-                          textAlign: TextAlign.center,
-                        ),
+
 
                       ],
                     )

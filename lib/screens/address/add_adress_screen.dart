@@ -61,6 +61,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
           AppTextFiled(
             textEditingController: contactNumberEditingController,
             maxLength: 9,
+            prefixIcon: (Icons.phone_android),
             hintText: 'Phone Number',
            keyboardType: TextInputType.phone,
           ),
@@ -68,11 +69,13 @@ class _AddAddressScreenState extends State<AddAddressScreen> with Helpers{
           AppTextFiled(
             textEditingController: nameEditingController,
             hintText: 'Name',
+            prefixIcon: (Icons.person),
           ),
           SizedBox(height: SizeConfig.scaleHeight(20)),
           AppTextFiled(
             textEditingController: infoEditingController,
             hintText: 'info : Country, City, Street',
+            prefixIcon: (Icons.location_city_sharp),
           ),
           SizedBox(height: SizeConfig.scaleHeight(42)),
           AppElevatedButton(

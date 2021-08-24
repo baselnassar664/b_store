@@ -157,11 +157,60 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return latestProduct_card(
-                        product: home.homeModel!.data.latestProducts[index],
-                        onTap: () {
+                    return Padding(
+                      padding: EdgeInsets.only(right: SizeConfig.scaleWidth(15)),
+                      child: Container(
+                        clipBehavior:Clip.antiAlias ,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                            border: Border.all(color: AppColors.app_color)
+                        ),
+                        height: SizeConfig.scaleHeight(250),
+                        width:  SizeConfig.scaleWidth(180),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap: (){},
+                              child: Container(
+                                width: double.infinity,
+                                height: SizeConfig.scaleHeight( 150),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: AppColors.app_color,
+                                ),
+                                child:  CachedNetworkImage(
+                                  imageUrl:  home.homeModel!.data.latestProducts[index].imageUrl,
+                                  fit: BoxFit.cover,
 
-                        });
+                                  width: double.infinity,
+                                  placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                                  errorWidget: (context, url, error) => Icon(Icons.error),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Center(
+                              child: AppText(
+                                  text: home.homeModel!.data.latestProducts[index].nameEn,
+                                  color: AppColors.app_text1, fontsize: SizeConfig.scaleTextFont(13)
+                              ),
+                            ),SizedBox(
+                              height: 8,
+                            ),
+                            Center(child: AppText(text: "Price:\$${home.homeModel!.data.latestProducts[index].price}", color: AppColors.app_text3, fontsize: SizeConfig.scaleTextFont(17),fontWeight: FontWeight.w700)),
+                            SizedBox(
+                              height: 8,
+                            ),
+
+
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),

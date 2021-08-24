@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:b_store/get/card_controller.dart';
+import 'package:b_store/get/cart_controller.dart';
 import 'package:b_store/models/cart_item.dart';
 import 'package:b_store/preferences/student_preferences.dart';
+import 'package:b_store/screens/Categories/shop_order.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/helpers.dart';
 import 'package:b_store/utils/size_config.dart';
@@ -34,8 +35,8 @@ class _CartScreenState extends State<CartScreen> with Helpers {
             Padding(
               padding:  EdgeInsets.only(
                 top: SizeConfig.scaleHeight(30),
-                left: SizeConfig.scaleWidth(20),
-                right: SizeConfig.scaleWidth(20),
+                left: SizeConfig.scaleWidth(30),
+                right: SizeConfig.scaleWidth(30),
                 bottom: SizeConfig.scaleHeight(30),
               ),
               child: Column(
@@ -56,7 +57,7 @@ class _CartScreenState extends State<CartScreen> with Helpers {
                                   color: Colors.white,
                                   border: Border.all(color:AppColors.app_color)
                               ),
-                              height: SizeConfig.scaleHeight(170),
+                              height: SizeConfig.scaleHeight(165),
 
                               child:Row(
                                 children: [
@@ -117,14 +118,16 @@ class _CartScreenState extends State<CartScreen> with Helpers {
 
                   AppElevatedButton(
 
-                    onPressed: (){}, text: 'Submit'
+                    onPressed: (){
+                      Get.to(shopOrder(cart: cart,));
+                    }, text: 'Submit'
                     ,
                   )
 
                 ],
               ),
             )
-              : Center(child: Text('No Cart ',style: TextStyle(fontSize: SizeConfig.scaleTextFont(50)),));
+              : Center(child: Text('Add to Cart ',style: TextStyle(fontSize: SizeConfig.scaleTextFont(30)),));
         },
       ),
     );

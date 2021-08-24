@@ -13,7 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'get/adress_controller.dart';
-import 'get/card_controller.dart';
+import 'get/cart_controller.dart';
+import 'get/order_controller.dart';
 
 class LaunchScreen extends StatefulWidget {
   const LaunchScreen({Key? key}) : super(key: key);
@@ -24,10 +25,10 @@ class LaunchScreen extends StatefulWidget {
 
 class _LaunchScreenState extends State<LaunchScreen> {
   CartGetxController controller=Get.put(CartGetxController());
-  CartGetxController controllerOrder=Get.put(CartGetxController());
+  CartGetxController controllerCart=Get.put(CartGetxController());
   CitiesGetxController controllerCities=Get.put(CitiesGetxController());
-  AddressGetController  controllerAdress=Get.put(AddressGetController ());
-
+  AddressGetController  controllerAddress=Get.put(AddressGetController ());
+  OrderGetxController controllerOrder=Get.put( OrderGetxController());
   void initState() {
     // TODO: implement initState
     super.initState();
