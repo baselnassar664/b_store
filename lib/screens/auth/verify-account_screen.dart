@@ -1,5 +1,5 @@
 import 'package:b_store/api/auth_api_controller.dart';
-import 'package:b_store/bottom_bar/main_screen.dart';
+
 import 'package:b_store/screens/auth/sign_in_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/helpers.dart';

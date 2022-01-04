@@ -16,6 +16,7 @@ class ProudctGetController extends GetxController{
 
   void onInit() {
     super.onInit();
+    getFavoriteProducts();
   }
 
   Future<void> getproduct({required int id}) async {

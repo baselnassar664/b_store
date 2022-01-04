@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 
 import 'db/db_provilder.dart';
-import 'fb_noftification/fb_notifications.dart';
+
 import 'get/language.dart';
 
 import 'launch_screen.dart';

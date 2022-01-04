@@ -1,7 +1,8 @@
 import 'package:b_store/api/auth_api_controller.dart';
-import 'package:b_store/bottom_bar/main_screen.dart';
+
 import 'package:b_store/screens/auth/Recover_Account.dart';
 import 'package:b_store/screens/auth/sign_up_screen.dart';
+import 'package:b_store/screens/bottom_bar/main_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/helpers.dart';
 import 'package:b_store/utils/size_config.dart';
@@ -100,7 +101,7 @@ class _SignInScreenState extends State<SignInScreen> with Helpers{
    return false;
   }
   Future login() async {
-    String? fcmToken = await FirebaseMessaging.instance.getToken();
+
     bool loggedIn = await AuthApiController().login(context,
        mobile: _mobileEditingController.text,
         password: _passwordEditingController.text);

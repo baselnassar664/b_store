@@ -1,12 +1,14 @@
-import 'package:b_store/bottom_bar/setting_screen.dart';
-import 'package:b_store/fb_noftification/fb_notifications.dart';
+
+import 'package:b_store/models/bottom_bar.dart';
+import 'package:b_store/screens/bottom_bar/setting_screen.dart';
+
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/appar_text.dart';
 import 'package:b_store/get/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../models/bottom_bar.dart';
+
 import 'cart_screen.dart';
 import 'favorite_screen.dart';
 import 'home_screen.dart';
@@ -20,7 +22,7 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> with FbNotifications{
+class _MainScreenState extends State<MainScreen> {
   List<BottomBar> _bar=[
     BottomBar(text: 'home',screen: HomeScreen()),
     BottomBar(text: 'favourite',screen: favoriteScreen()),
@@ -31,13 +33,7 @@ class _MainScreenState extends State<MainScreen> with FbNotifications{
   ];
 
 int _selectedIndex=0;
-@override
-void initState() {
-  // TODO: implement initState
-  super.initState();
-  initializeForegroundNotificationForAndroid();
-  manageNotificationAction();
-}
+
 
   @override
   Widget build(BuildContext context) {

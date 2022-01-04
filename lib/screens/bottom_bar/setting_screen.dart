@@ -1,6 +1,6 @@
 import 'package:b_store/api/auth_api_controller.dart';
 import 'package:b_store/get/language.dart';
-import 'package:b_store/get/language_getx_controller.dart';
+
 import 'package:b_store/preferences/student_preferences.dart';
 import 'package:b_store/screens/about_app.dart';
 import 'package:b_store/screens/address/add_adress_screen.dart';
@@ -48,7 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
                  Get.to(ProfileScreen());
                }),
            buildDivider(),
-           buildGestureDetector(   text:  "language".tr,
+           buildGestureDetector(text:  "language".tr,
                icon: Icons.language,onTap: (){
                  AppLocale.changeLang();
                }),
@@ -61,11 +61,7 @@ class _SettingScreenState extends State<SettingScreen> {
             Get.to(AddressScreen());
               }),
           buildDivider(),
-          buildGestureDetector( text: 'nofilcation'.tr,
-              icon: Icons.notifications,onTap: (){
-                Get.to(AddressScreen());
-              }),
-          buildDivider(),
+
           buildGestureDetector(   text: "contact_us".tr,
               icon: Icons.contact_page,onTap: (){  Get.to(ContactUs());}),
           buildDivider(),

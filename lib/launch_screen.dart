@@ -1,9 +1,10 @@
 
-import 'package:b_store/boarding/boarding_screen.dart';
-import 'package:b_store/bottom_bar/main_screen.dart';
+
 import 'package:b_store/get/cities_controller.dart';
 import 'package:b_store/get/product_controller.dart';
 import 'package:b_store/preferences/student_preferences.dart';
+import 'package:b_store/screens/boarding/boarding_screen.dart';
+import 'package:b_store/screens/bottom_bar/main_screen.dart';
 import 'package:b_store/utils/AppColors.dart';
 import 'package:b_store/utils/size_config.dart';
 import 'package:b_store/widget/app_text.dart';

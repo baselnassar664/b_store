@@ -37,9 +37,7 @@ class _RecoverAccountState extends State<RecoverAccount> with Helpers {
     return Scaffold(
 
       appBar:AppBar(
-        title:  ApparText(
-          text: 'Back',
-        ),
+
         leading: IconButton(
           onPressed: (){
             Navigator.pop(context);
